@@ -1,0 +1,148 @@
+{
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "files.autoSave": "afterDelay",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+
+    // VIM
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["k", "j"],
+            "after": ["<Esc>", "l"]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["k", "j"],
+            "after": ["<Esc>", "l"]
+        },
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [":", "c"],
+            "commands": [
+                "workbench.action.showCommands",
+            ],
+        },
+    ],
+    "workbench.editorAssociations": {
+        "*.pdf": "pdf.view"
+    },
+    "python.createEnvironment.trigger": "prompt",
+    "terminal.integrated.fontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+    "editor.codeLensFontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+    "debug.console.fontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+    "scm.inputFontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+    "explorer.compactFolders": true,
+    "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+      "files.trimTrailingWhitespace": false
+    },
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.accessibilitySupport": "off",
+    "editor.lineHeight": 1.4,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": false,
+    "editor.autoIndent": "full",
+    "editor.linkedEditing": true,
+
+    //Minimap and Scrollbar
+    "editor.minimap.enabled": true,
+    "editor.minimap.autohide": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.maxColumn": 100,
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.scale": 1,
+    "editor.minimap.showMarkSectionHeaders": true,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+
+    "window.commandCenter": false,
+    "window.titleBarStyle": "custom",
+
+    "breadcrumbs.enabled": false,
+
+    "apc.font.family": "'JetBrains Mono',Consolas, 'Courier New', monospace",
+    "apc.monospace.font.family": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+    "apc.activityBar": {
+      "position": "center",
+      "hideSettings": true,
+      "size": 30
+    },
+    "apc.electron": {
+      "transparent": true,
+      "opacity": 0.98,
+      "vibrancy": "fullscreen-ui",
+      "visualEffectState": "active"
+    },
+    "apc.statusBar": {
+      "position": "editor-bottom",
+      "height": 20,
+      "fontSize": 11
+    },
+    "apc.listRow": {
+      "height": 20
+    },
+    "apc.header": {
+      "height": 30
+    },
+    "apc.stylesheet": {
+      ".sidebar > .composite": "height: 10px !important",
+      ".title-label": "display: none !important",
+      ".inline-tabs-placeholder": "display: none !important",
+      ".split-view-view .visible": "background-color: #23262e!important",
+      ".quick-input-widget": {
+        "position": "absolute !important",
+        "top": "200px !important",
+        "left": "50%",
+        "border-radius": "10px"
+      },
+      ".titlebar-left": {
+        "max-width": "70px !important"
+      },
+      ".titlebar-center": {
+        "margin": "0 !important"
+      },
+      ".action-item.menu-entry": {
+        "display": "none !important"
+      },
+      ".monaco-inputbox": {
+        "border-radius": "6px!important"
+      },
+      ".monaco-inputbox>.ibwrapper>.input, .monaco-inputbox>.ibwrapper>.mirror": {
+        "padding": "8px 10px !important"
+      },
+      ".quick-input-list > .monaco-list > .monaco-scrollable-element": {
+        "padding": "2px !important"
+      }
+    },
+    "workbench.editor.tabCloseButton": "left",
+    //"workbench.colorCustomizations": {
+    //  "editor.background": "#24272f",
+    //  "terminal.background": "#24272f",
+    //  "titleBar.activeForeground": "#999999",
+    //  "statusBar.foreground": "#717687",
+    //  "editorLineNumber.foreground": "#464a5b",
+    //  "statusBarItem.hoverBackground": "#161921"
+    //},
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.editor.tabActionLocation": "right",
+    "workbench.editor.showTabs": "multiple",
+    "explorer.decorations.badges": true,
+    "gitlens.mode.active": "zen",
+
+    //ZEN MODE
+    //"workbench.statusBar.visible": false,
+    //"workbench.activityBar.location": "hidden"
+}
