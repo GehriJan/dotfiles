@@ -1,0 +1,24 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+r cmd+a",
+        "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
+    },
+
+    {
+        "key": "tab",
+        "command": "tab",
+        "when": "editorTextFocus && !editorTabMovesFocus"
+    },
+
+    {
+        "key": "shift+tab",
+        "command": "outdent",
+        "when": "editorTextFocus && !editorTabMovesFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "-deleteAllRight",
+        "when": "textInputFocus && !editorReadonly"
+    }
+]

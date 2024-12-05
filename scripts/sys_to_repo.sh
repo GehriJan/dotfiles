@@ -1,23 +1,29 @@
-#!/bin/bash
-
 # Path to your dotfiles repository
 DOTFILES_REPO_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../ && pwd )"
 echo "Repo path $DOTFILES_REPO_PATH"
 
-# Define the list of path-pairs: (System path -> Repo path)
-declare -A PATH_PAIRS=(
-  ["$HOME/.bash_profile"]="$DOTFILES_REPO_PATH/.bash_profile"
-  ["$HOME/.vimrc"]="$DOTFILES_REPO_PATH/.vimrc"
-  ["$HOME/.zshrc"]="$DOTFILES_REPO_PATH/.zshrc"
-  ["$HOME/.gitconfig"]="$DOTFILES_REPO_PATH/.gitconfig"
-  ["$HOME/.config/nvim"]="$DOTFILES_REPO_PATH/nvim"
-  ["$HOME/Library/Application Support/Code/User/settings.json"]="$DOTFILES_REPO_PATH/vscode/settings.json"
-  ["$HOME/Library/Application Support/Code/User/keybindings.json"]="$DOTFILES_REPO_PATH/vscode/keybindings.json"
+# Define system paths and their corresponding repo paths
+SYSTEM_PATHS=(
+  "$HOME/.bash_profile"
+  "$HOME/.vimrc"
+  "$HOME/.zshrc"
+  "$HOME/.config/nvim"
+  "$HOME/Library/Application Support/Code/User/settings.json"
+  "$HOME/Library/Application Support/Code/User/keybindings.json"
+)
+REPO_PATHS=(
+  "$DOTFILES_REPO_PATH/.bash_profile"
+  "$DOTFILES_REPO_PATH/.vimrc"
+  "$DOTFILES_REPO_PATH/.zshrc"
+  "$DOTFILES_REPO_PATH/"
+  "$DOTFILES_REPO_PATH/vscode/settings.json"
+  "$DOTFILES_REPO_PATH/vscode/keybindings.json"
 )
 
 # Loop through each path-pair
-for SYSTEM_PATH in "${!PATH_PAIRS[@]}"; do
-  REPO_PATH="${PATH_PAIRS[$SYSTEM_PATH]}"
+for i in "${!SYSTEM_PATHS[@]}"; do
+  SYSTEM_PATH="${SYSTEM_PATHS[$i]}"
+  REPO_PATH="${REPO_PATHS[$i]}"
 
   # Check if the system file exists
   if [ -e "$SYSTEM_PATH" ]; then
@@ -28,5 +34,7 @@ for SYSTEM_PATH in "${!PATH_PAIRS[@]}"; do
     echo "Warning: $SYSTEM_PATH does not exist, skipping."
   fi
 done
+echo "Pulled files from system."
+
 
 echo "Dotfiles sync complete."
