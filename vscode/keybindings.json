@@ -5,6 +5,16 @@
         "command": "python.execInTerminal",
         "when": "editorTextFocus"
     },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.quickOpen",
+        "when": "!editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.files.openFileFolder",
+        "when": "editorTextFocus"
+    },
     //VIM-Like navigation on selection windows
     {
         "key": "ctrl+j",
@@ -39,7 +49,13 @@
     },
     {
         "key": "ctrl+t",
-        "command": "workbench.action.togglePanel"
+        "command": "workbench.action.togglePanel",
+        "when": "terminalFocus",
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
     },
     {
         "key": "ctrl+n",
@@ -47,7 +63,7 @@
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+w",
+        "key": "ctrl+q",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus"
     },
