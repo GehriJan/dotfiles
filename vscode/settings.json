@@ -1,181 +1,175 @@
 {
-    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
-    "files.autoSave": "afterDelay",
-    "git.enableSmartCommit": true,
-    "git.confirmSync": false,
+  "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+  "files.autoSave": "afterDelay",
+  "files.simpleDialog.enable": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
 
-    // VIM
-    "vim.vimrc.enable": true,
-    "vim.useSystemClipboard": false,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["k", "j"],
-            "after": ["<Esc>", "l"]
-        },
-    ],
-    "vim.visualModeKeyBindings": [
-        {
-            "before": ["k", "j"],
-            "after": ["<Esc>", "l"]
-        },
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": [":", "c", "Enter"],
-            "commands": [
-                "workbench.action.showCommands",
-            ],
-        },
-        {
-            "before": [":", "o", "Enter"],
-            "commands": [
-                "workbench.action.showAllEditors",
-            ],
-        },
-        {
-            "before": [":", "r", "p", "Enter"],
-            "after": [":", "!", "p", "y", "t", "h", "o", "n", "3", " ", "%", "Enter"],
-        },
-    ],
-    "vim.statusBarColorControl": true,
-    "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
-    "vim.statusBarColors.insert": "#BF616A",
-    "vim.statusBarColors.visual": "#B48EAD",
-    "vim.statusBarColors.visualline": "#B48EAD",
-    "vim.statusBarColors.visualblock": "#A3BE8C",
-    "vim.statusBarColors.replace": "#D08770",
-    "vim.statusBarColors.commandlineinprogress": "#007ACC",
-    "vim.statusBarColors.searchinprogressmode": "#007ACC",
-    "vim.statusBarColors.easymotionmode": "#007ACC",
-    "vim.statusBarColors.easymotioninputmode": "#007ACC",
-    "vim.statusBarColors.surroundinputmode": "#007ACC",
-    "workbench.editorAssociations": {
-        "*.pdf": "pdf.view"
-    },
-    "python.createEnvironment.trigger": "prompt",
-    "terminal.integrated.fontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
-    "editor.codeLensFontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
-    "debug.console.fontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
-    "scm.inputFontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+  // VIM
+  "vim.vimrc.enable": false,
+  "vim.useSystemClipboard": false,
+  "vim.leader": "<space>",
+  "vim.insertModeKeyBindings": [
+    { "before": ["k", "j"], "after": ["<Esc>", "l"] }
+  ],
+  "vim.visualModeKeyBindings": [
+    { "before": ["k", "j"], "after": ["<Esc>", "l"] },
+    // Stay in visual mode while indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    // Move selected lines while staying in visual mode
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    // toggle comment selection
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    //When going up and done keep cursor centered
+    { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
+    { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
+    { "before": ["<C-b>"], "after": ["<C-b>", "z", "z"] },
+    { "before": ["<C-f>"], "after": ["<C-f>", "z", "z"] },
 
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    //Change "tab"
+    { "before": ["<S-h>"], "commands": [":bprevious"] },
+    { "before": ["<S-l>"], "commands": [":bnext"] },
 
-    "explorer.compactFolders": true,
-    "files.trimTrailingWhitespace": true,
-    "[markdown]": {
-      "files.trimTrailingWhitespace": false
+    //Change group
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"]
     },
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
-    "editor.fontFamily": "JetBrains Mono",
-    "editor.fontLigatures": true,
-    "editor.accessibilitySupport": "off",
-    "editor.lineHeight": 1.4,
-    "editor.cursorBlinking": "expand",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.fontSize": 12,
-    "editor.tabSize": 4,
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": false,
-    "editor.autoIndent": "full",
-    "editor.linkedEditing": true,
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
 
-    //Minimap and Scrollbar
-    "editor.minimap.enabled": true,
-    "editor.minimap.autohide": true,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.maxColumn": 100,
-    "editor.minimap.showSlider": "mouseover",
-    "editor.minimap.scale": 1,
-    "editor.minimap.showMarkSectionHeaders": true,
-    "editor.scrollbar.vertical": "hidden",
-    "editor.scrollbar.horizontal": "hidden",
+    //resize window
+    { "before": ["leader", "j"], "after": ["<C-w>", "-"] },
+    { "before": ["leader", "k"], "after": ["<C-w>", "+"] },
+    { "before": ["leader", "h"], "after": ["<C-w>", "<"] },
+    { "before": ["leader", "l"], "after": ["<C-w>", ">"] },
 
-    "window.commandCenter": false,
-    "window.titleBarStyle": "custom",
+    //Splits
+    { "before": ["leader", "v"], "commands": [":vsplit"] },
+    { "before": ["leader", "s"], "commands": [":split"] },
 
-    "breadcrumbs.enabled": false,
+    //Quicker File closing/saving
+    { "before": ["leader", "w"], "commands": [":w!"] },
+    { "before": ["leader", "q"], "commands": [":q!"] },
+    { "before": ["leader", "x"], "commands": [":x!"] },
 
-    "apc.font.family": "'JetBrains Mono',Consolas, 'Courier New', monospace",
-    "apc.monospace.font.family": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
-    "apc.activityBar": {
-      "position": "center",
-      "hideSettings": true,
-      "size": 30
-    },
-    "apc.electron": {
-      "transparent": true,
-      "opacity": 0.98,
-      "vibrancy": "fullscreen-ui",
-      "visualEffectState": "active"
-    },
-    "apc.statusBar": {
-      "position": "editor-bottom",
-      "height": 20,
-      "fontSize": 11
-    },
-    "apc.listRow": {
-      "height": 20
-    },
-    "apc.header": {
-      "height": 30
-    },
-    "apc.stylesheet": {
-      ".sidebar > .composite": "height: 10px !important",
-      ".title-label": "display: none !important",
-      ".inline-tabs-placeholder": "display: none !important",
-      ".split-view-view .visible": "background-color: #23262e!important",
-      ".quick-input-widget": {
-        "position": "absolute !important",
-        "top": "200px !important",
-        "left": "50%",
-        "border-radius": "10px"
-      },
-      ".titlebar-left": {
-        "max-width": "70px !important"
-      },
-      ".titlebar-center": {
-        "margin": "0 !important"
-      },
-      ".action-item.menu-entry": {
-        "display": "none !important"
-      },
-      ".monaco-inputbox": {
-        "border-radius": "6px!important"
-      },
-      ".monaco-inputbox>.ibwrapper>.input, .monaco-inputbox>.ibwrapper>.mirror": {
-        "padding": "8px 10px !important"
-      },
-      ".quick-input-list > .monaco-list > .monaco-scrollable-element": {
-        "padding": "2px !important"
-      }
-    },
-    //"workbench.colorCustomizations": {
-    //  "editor.background": "#24272f",
-    //  "terminal.background": "#24272f",
-    //  "titleBar.activeForeground": "#999999",
-    //  "statusBar.foreground": "#717687",
-    //  "editorLineNumber.foreground": "#464a5b",
-    //  "statusBarItem.hoverBackground": "#161921"
-    //},
-    "workbench.editor.editorActionsLocation": "hidden",
-    "workbench.editor.showTabs": "multiple",
-    "workbench.editor.tabActionButton": "right",
-    "explorer.decorations.badges": true,
-    "explorer.autoReveal": false,
-    "debug.internalConsoleOptions": "neverOpen",
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "hediet.vscode-drawio.resizeImages": null,
-    "workbench.colorCustomizations": {
-      "statusBar.background": "#8FBCBB",
-      "statusBar.noFolderBackground": "#8FBCBB",
-      "statusBar.debuggingBackground": "#8FBCBB",
-      "statusBar.foreground": "#434C5E",
-      "statusBar.debuggingForeground": "#434C5E"
-    },
-    //ZEN MODE
-    //"workbench.statusBar.visible": false,
-    //"workbench.activityBar.location": "hidden"
+    { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },
+    //commenting line
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
+
+    {
+      "before": ["leader", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    }
+  ],
+  "vim.useCtrlKeys": true,
+  "vim.autoindent": true,
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
+  "vim.statusBarColors.insert": "#BF616A",
+  "vim.statusBarColors.visual": "#B48EAD",
+  "vim.statusBarColors.visualline": "#B48EAD",
+  "vim.statusBarColors.visualblock": "#A3BE8C",
+  "vim.statusBarColors.replace": "#D08770",
+  "vim.statusBarColors.commandlineinprogress": "#007ACC",
+  "vim.statusBarColors.searchinprogressmode": "#007ACC",
+  "vim.statusBarColors.easymotionmode": "#007ACC",
+  "vim.statusBarColors.easymotioninputmode": "#007ACC",
+  "vim.statusBarColors.surroundinputmode": "#007ACC",
+  "workbench.editorAssociations": {
+    "*.pdf": "pdf.view"
+  },
+  "python.createEnvironment.trigger": "prompt",
+  "terminal.integrated.fontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+  "editor.codeLensFontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+  "debug.console.fontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+  "scm.inputFontFamily": "'Jetbrains Mono',Consolas, 'Courier New', monospace",
+
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+  "explorer.compactFolders": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.accessibilitySupport": "off",
+  "editor.lineHeight": 1.4,
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontSize": 12,
+  "editor.tabSize": 4,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": false,
+  "editor.autoIndent": "full",
+  "editor.linkedEditing": true,
+  "editor.lineNumbers": "relative",
+
+  //Minimap and Scrollbar
+  "editor.minimap.enabled": true,
+  "editor.minimap.autohide": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.maxColumn": 100,
+  "editor.minimap.showSlider": "mouseover",
+  "editor.minimap.scale": 1,
+  "editor.minimap.showMarkSectionHeaders": true,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+
+  "window.commandCenter": false,
+  "window.titleBarStyle": "custom",
+
+  "breadcrumbs.enabled": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.editor.showTabs": "multiple",
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.tabActionButton": "right",
+  "explorer.decorations.badges": true,
+  "explorer.autoReveal": false,
+  "debug.internalConsoleOptions": "neverOpen",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "hediet.vscode-drawio.resizeImages": null,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#8FBCBB",
+    "statusBar.noFolderBackground": "#8FBCBB",
+    "statusBar.debuggingBackground": "#8FBCBB",
+    "statusBar.foreground": "#434C5E",
+    "statusBar.debuggingForeground": "#434C5E"
+  },
+  "workbench.settings.openDefaultKeybindings": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typst]": {
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "[typst-code]": {
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  }
 }
