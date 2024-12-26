@@ -59,7 +59,10 @@
     { "before": ["leader", "l"], "after": ["<C-w>", ">"] },
 
     //Splits
-    { "before": ["leader", "v"], "commands": [":vsplit"] },
+    {
+      "before": ["leader", "v"],
+      "commands": [":vsplit"]
+    },
     { "before": ["leader", "s"], "commands": [":split"] },
 
     //Quicker File closing/saving
@@ -74,6 +77,18 @@
     {
       "before": ["leader", "z"],
       "commands": ["workbench.action.toggleZenMode"]
+    }
+  ],
+  "multiCommand.commands": [
+    {
+      "command": "vsplitNewFile",
+      "sequence": [
+        { "command": "workbench.action.splitEditor" },
+        { "command": "editor.action.quickOpen" },
+        { "command": "workbench.action.previousEditorInGroup" },
+        { "command": "workbench.action.files.save" },
+        { "command": "workbench.action.closeActiveEditor" }
+      ]
     }
   ],
   "vim.useCtrlKeys": true,
@@ -171,5 +186,6 @@
   },
   "[typst-code]": {
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
-  }
+  },
+  "zenMode.hideLineNumbers": false
 }
