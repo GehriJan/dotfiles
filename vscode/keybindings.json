@@ -1,5 +1,49 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
+  //Mimick leader behaviour
+  {
+    "key": "space f",
+    "command": "workbench.action.quickOpen",
+    "when": "!editorTextFocus"
+  },
+  {
+    "key": "space z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "!editorTextFocus"
+  },
+  {
+    "key": "space =",
+    "command": "workbench.action.evenEditorWidths",
+    "when": "!editorTextFocus"
+  },
+  // change group
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  // change tab
+  {
+    "key": "shift+h",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "!editorTextFocus"
+  },
+  {
+    "key": "shift+l",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "!editorTextFocus"
+  },
   {
     "key": "ctrl+enter",
     "command": "python.execInTerminal",
@@ -12,8 +56,7 @@
   },
   {
     "key": "ctrl+shift+o",
-    "command": "workbench.action.files.openFileFolder",
-    "when": "editorTextFocus"
+    "command": "workbench.action.files.openFileFolder"
   },
   //VIM-Like navigation on selection windows
   {
@@ -69,12 +112,12 @@
   },
   // FILE TREE
   {
-    "command": "workbench.action.toggleSidebarVisibility",
-    "key": "ctrl+e"
+    "key": "ctrl+e",
+    "command": "workbench.action.toggleSidebarVisibility"
   },
   {
-    "command": "workbench.files.action.focusFilesExplorer",
     "key": "ctrl+e",
+    "command": "workbench.files.action.focusFilesExplorer",
     "when": "editorTextFocus"
   },
   {
@@ -83,8 +126,23 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "command": "renameFile",
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
     "key": "r",
+    "command": "renameFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
@@ -98,8 +156,8 @@
     "when": "!explorerViewletFocus && !editorTextFocus"
   },
   {
-    "command": "deleteFile",
     "key": "d",
+    "command": "deleteFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
 

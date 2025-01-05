@@ -9,10 +9,14 @@
   "vim.vimrc.enable": false,
   "vim.useSystemClipboard": false,
   "vim.leader": "<space>",
+  "vim.ignorecase": true,
   "vim.insertModeKeyBindings": [
     { "before": ["k", "j"], "after": ["<Esc>", "l"] }
   ],
-  "vim.visualModeKeyBindings": [
+  "vim.visualModeKeyBindingsNonRecursive": [
+    { "before": ["j"], "after": ["g", "j"] },
+    { "before": ["k"], "after": ["g", "k"] },
+
     { "before": ["k", "j"], "after": ["<Esc>", "l"] },
     // Stay in visual mode while indenting
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
@@ -21,7 +25,10 @@
     { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
     { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
     // toggle comment selection
-    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
+    //keep focus centered
+    { "before": ["n"], "after": ["n", "z", "z"] },
+    { "before": ["N"], "after": ["N", "z", "z"] }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     //When going up and done keep cursor centered
@@ -29,29 +36,13 @@
     { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
     { "before": ["<C-b>"], "after": ["<C-b>", "z", "z"] },
     { "before": ["<C-f>"], "after": ["<C-f>", "z", "z"] },
-
+    { "before": ["n"], "after": ["n", "z", "z"] },
+    { "before": ["N"], "after": ["N", "z", "z"] },
+    { "before": ["j"], "after": ["g", "j"] },
+    { "before": ["k"], "after": ["g", "k"] },
     //Change "tab"
     { "before": ["<S-h>"], "commands": [":bprevious"] },
     { "before": ["<S-l>"], "commands": [":bnext"] },
-
-    //Change group
-    {
-      "before": ["<C-h>"],
-      "commands": ["workbench.action.focusLeftGroup"]
-    },
-    {
-      "before": ["<C-j>"],
-      "commands": ["workbench.action.focusBelowGroup"]
-    },
-    {
-      "before": ["<C-k>"],
-      "commands": ["workbench.action.focusAboveGroup"]
-    },
-    {
-      "before": ["<C-l>"],
-      "commands": ["workbench.action.focusRightGroup"]
-    },
-
     //resize window
     { "before": ["leader", "j"], "after": ["<C-w>", "-"] },
     { "before": ["leader", "k"], "after": ["<C-w>", "+"] },
@@ -69,6 +60,7 @@
     { "before": ["leader", "w"], "commands": [":w!"] },
     { "before": ["leader", "q"], "commands": [":q!"] },
     { "before": ["leader", "x"], "commands": [":x!"] },
+    { "before": ["leader", "="], "after": ["<C-w>", "="] },
 
     { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },
     //commenting line
@@ -154,7 +146,7 @@
 
   "breadcrumbs.enabled": false,
   "workbench.editor.editorActionsLocation": "hidden",
-  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,
   "workbench.editor.tabActionButton": "right",
   "explorer.decorations.badges": true,
@@ -187,5 +179,6 @@
   "[typst-code]": {
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
   },
-  "zenMode.hideLineNumbers": false
+  "zenMode.hideLineNumbers": false,
+  "catppuccin.accentColor": "blue"
 }
