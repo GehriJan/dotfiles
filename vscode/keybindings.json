@@ -1,21 +1,21 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
   //Mimick leader behaviour
-  {
-    "key": "space f",
-    "command": "workbench.action.quickOpen",
-    "when": "!editorTextFocus"
-  },
-  {
-    "key": "space z",
-    "command": "workbench.action.toggleZenMode",
-    "when": "!editorTextFocus"
-  },
-  {
-    "key": "space =",
-    "command": "workbench.action.evenEditorWidths",
-    "when": "!editorTextFocus"
-  },
+  // {
+  //   "key": "space f",
+  //   "command": "workbench.action.quickOpen",
+  //   "when": "!editorTextFocus"
+  // },
+  // {
+  //   "key": "space z",
+  //   "command": "workbench.action.toggleZenMode",
+  //   "when": "!editorTextFocus"
+  // },
+  // {
+  //   "key": "space =",
+  //   "command": "workbench.action.evenEditorWidths",
+  //   "when": "!editorTextFocus"
+  // },
   // change group
   {
     "key": "ctrl+h",
@@ -34,16 +34,16 @@
     "command": "workbench.action.focusAboveGroup"
   },
   // change tab
-  {
-    "key": "shift+h",
-    "command": "workbench.action.previousEditorInGroup",
-    "when": "!editorTextFocus"
-  },
-  {
-    "key": "shift+l",
-    "command": "workbench.action.nextEditorInGroup",
-    "when": "!editorTextFocus"
-  },
+  // {
+  //   "key": "shift+h",
+  //   "command": "workbench.action.previousEditorInGroup",
+  //   "when": "!editorTextFocus"
+  // },
+  // {
+  //   "key": "shift+l",
+  //   "command": "workbench.action.nextEditorInGroup",
+  //   "when": "!editorTextFocus"
+  // },
   {
     "key": "ctrl+enter",
     "command": "python.execInTerminal",
