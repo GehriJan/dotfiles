@@ -1,22 +1,7 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-  //Mimick leader behaviour
-  // {
-  //   "key": "space f",
-  //   "command": "workbench.action.quickOpen",
-  //   "when": "!editorTextFocus"
-  // },
-  // {
-  //   "key": "space z",
-  //   "command": "workbench.action.toggleZenMode",
-  //   "when": "!editorTextFocus"
-  // },
-  // {
-  //   "key": "space =",
-  //   "command": "workbench.action.evenEditorWidths",
-  //   "when": "!editorTextFocus"
-  // },
-  // change group
+  //Mark: NAVIGATION
+  // Group navigation
   {
     "key": "ctrl+h",
     "command": "workbench.action.focusLeftGroup"
@@ -33,32 +18,19 @@
     "key": "ctrl+k",
     "command": "workbench.action.focusAboveGroup"
   },
-  // change tab
-  // {
-  //   "key": "shift+h",
-  //   "command": "workbench.action.previousEditorInGroup",
-  //   "when": "!editorTextFocus"
-  // },
-  // {
-  //   "key": "shift+l",
-  //   "command": "workbench.action.nextEditorInGroup",
-  //   "when": "!editorTextFocus"
-  // },
+  // Tab navigation
   {
-    "key": "ctrl+enter",
-    "command": "python.execInTerminal",
-    "when": "editorTextFocus"
+    "key": "shift+h",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "!inputFocus"
   },
   {
-    "key": "ctrl+o",
-    "command": "workbench.action.quickOpen",
-    "when": "!editorTextFocus"
+    "key": "shift+l",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "!inputFocus"
   },
-  {
-    "key": "ctrl+shift+o",
-    "command": "workbench.action.files.openFileFolder"
-  },
-  //VIM-Like navigation on selection windows
+
+  //Vim-like navigation on selection windows
   {
     "key": "ctrl+j",
     "command": "selectNextSuggestion",
@@ -79,17 +51,9 @@
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
-  // NAVIGATION
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
-  },
+
+
+  // Terminal
   {
     "key": "ctrl+t",
     "command": "workbench.action.togglePanel",
@@ -101,6 +65,16 @@
     "when": "!terminalFocus"
   },
   {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
     "key": "ctrl+n",
     "command": "workbench.action.terminal.new",
     "when": "terminalFocus"
@@ -110,6 +84,7 @@
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
+
   // FILE TREE
   {
     "key": "ctrl+e",
@@ -159,6 +134,37 @@
     "key": "d",
     "command": "deleteFile",
     "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  //Mimick leader behaviour
+  {
+    "key": "space f",
+    "command": "workbench.action.quickOpen",
+    "when": "!inputFocus"
+  },
+  {
+  "key": "space z",
+  "command": "workbench.action.toggleZenMode",
+  "when": "!inputFocus"
+  },
+  {
+    "key": "space =",
+    "command": "workbench.action.evenEditorWidths",
+    "when": "!inputFocus"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "python.execInTerminal",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.quickOpen",
+    "when": "!editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "workbench.action.files.openFileFolder"
   },
 
   // EXTRA

@@ -10,6 +10,7 @@
   "vim.useSystemClipboard": false,
   "vim.leader": "<space>",
   "vim.ignorecase": true,
+  "extensions.experimental.affinity": { "vscodevim.vim": 1 },
   "vim.insertModeKeyBindings": [
     { "before": ["k", "j"], "after": ["<Esc>", "l"] }
   ],
@@ -69,18 +70,6 @@
     {
       "before": ["leader", "z"],
       "commands": ["workbench.action.toggleZenMode"]
-    }
-  ],
-  "multiCommand.commands": [
-    {
-      "command": "vsplitNewFile",
-      "sequence": [
-        { "command": "workbench.action.splitEditor" },
-        { "command": "editor.action.quickOpen" },
-        { "command": "workbench.action.previousEditorInGroup" },
-        { "command": "workbench.action.files.save" },
-        { "command": "workbench.action.closeActiveEditor" }
-      ]
     }
   ],
   "vim.useCtrlKeys": true,
@@ -180,5 +169,6 @@
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
   },
   "zenMode.hideLineNumbers": false,
-  "catppuccin.accentColor": "blue"
+  "catppuccin.accentColor": "blue",
+  "workbench.iconTheme": "Monokai Pro Icons"
 }
