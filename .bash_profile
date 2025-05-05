@@ -3,4 +3,6 @@ alias gitree='git log --graph --all --decorate --pretty=format:"%Cred%h%Creset -
 alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias odd='cd "~/OneDrive - Duale Hochschule Baden-Württemberg Stuttgart"'
 alias odp='cd "~/OneDrive - Persönlich"'
+alias tl='trans :en -b'
+
 

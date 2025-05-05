@@ -52,7 +52,6 @@
     "when": "inQuickOpen"
   },
 
-
   // Terminal
   {
     "key": "ctrl+t",
@@ -88,12 +87,14 @@
   // FILE TREE
   {
     "key": "ctrl+e",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus || terminalFocus"
   },
   {
     "key": "ctrl+e",
     "command": "workbench.files.action.focusFilesExplorer",
-    "when": "editorTextFocus"
+    // "when": "editorFocus || !editorIsOpen"
+    "when": "!filesExplorerFocus"
   },
   {
     "key": "n",
@@ -128,7 +129,7 @@
   {
     "key": "shift+n",
     "command": "workbench.action.newWindow",
-    "when": "!explorerViewletFocus && !editorTextFocus"
+    "when": "!explorerViewletFocus && !editorTextFocus && !inputFocus"
   },
   {
     "key": "d",
@@ -143,9 +144,19 @@
     "when": "!inputFocus"
   },
   {
-  "key": "space z",
-  "command": "workbench.action.toggleZenMode",
-  "when": "!inputFocus"
+    "key": "space o",
+    "command": "workbench.action.files.openFileFolder",
+    "when": "!inputFocus"
+  },
+  {
+    "key": "space z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "!inputFocus"
+  },
+  {
+    "key": "space x",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "!inputFocus"
   },
   {
     "key": "space =",
@@ -153,9 +164,14 @@
     "when": "!inputFocus"
   },
   {
+    "key": "space l g",
+    "command": "lazygit-vscode.toggle",
+    "when": "!inputFocus"
+  },
+  {
     "key": "ctrl+enter",
     "command": "python.execInTerminal",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && !notebookCellFocused"
   },
   {
     "key": "ctrl+o",
@@ -171,5 +187,9 @@
   {
     "key": "ctrl+z",
     "command": "workbench.action.toggleZenMode"
+  },
+  {
+    "key": "cmd+k r",
+    "command": "jupyter.restartkernel"
   }
 ]

@@ -4,34 +4,49 @@
   "files.simpleDialog.enable": true,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
-
   // VIM
   "vim.vimrc.enable": false,
-  "vim.useSystemClipboard": false,
+  "vim.surround": true,
+  "vim.useSystemClipboard": true,
   "vim.leader": "<space>",
   "vim.ignorecase": true,
   "extensions.experimental.affinity": { "vscodevim.vim": 1 },
+
   "vim.insertModeKeyBindings": [
     { "before": ["k", "j"], "after": ["<Esc>", "l"] }
   ],
+
   "vim.visualModeKeyBindingsNonRecursive": [
+    // Move visual lines, not file lines
     { "before": ["j"], "after": ["g", "j"] },
     { "before": ["k"], "after": ["g", "k"] },
 
     { "before": ["k", "j"], "after": ["<Esc>", "l"] },
+
     // Stay in visual mode while indenting
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
     { "before": [">"], "commands": ["editor.action.indentLines"] },
+
     // Move selected lines while staying in visual mode
     { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
     { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
-    // toggle comment selection
+
+    // Toggle comment selection
     { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
-    //keep focus centered
+
+    { "before": ["leader", "p"], "after": ["\"", "+", "p"] },
+    { "before": ["leader", "P"], "after": ["\"", "+", "P"] },
+    { "before": ["leader", "y"], "after": ["\"", "+", "y"] },
+    { "before": ["leader", "Y"], "after": ["\"", "+", "Y"] },
+
+    // Keep cursor centered
     { "before": ["n"], "after": ["n", "z", "z"] },
     { "before": ["N"], "after": ["N", "z", "z"] }
   ],
+
   "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": ["Y"], "after": ["y", "$"] },
+
     //When going up and done keep cursor centered
     { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
     { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
@@ -39,12 +54,16 @@
     { "before": ["<C-f>"], "after": ["<C-f>", "z", "z"] },
     { "before": ["n"], "after": ["n", "z", "z"] },
     { "before": ["N"], "after": ["N", "z", "z"] },
+
+    //Move visual, not file lines
     { "before": ["j"], "after": ["g", "j"] },
     { "before": ["k"], "after": ["g", "k"] },
+
     //Change "tab"
     { "before": ["<S-h>"], "commands": [":bprevious"] },
     { "before": ["<S-l>"], "commands": [":bnext"] },
-    //resize window
+
+    //Resize window
     { "before": ["leader", "j"], "after": ["<C-w>", "-"] },
     { "before": ["leader", "k"], "after": ["<C-w>", "+"] },
     { "before": ["leader", "h"], "after": ["<C-w>", "<"] },
@@ -57,21 +76,44 @@
     },
     { "before": ["leader", "s"], "commands": [":split"] },
 
-    //Quicker File closing/saving
+    // Quicker File closing/saving
     { "before": ["leader", "w"], "commands": [":w!"] },
     { "before": ["leader", "q"], "commands": [":q!"] },
+    { "before": ["leader", "q", "a"], "commands": [":qa"] },
     { "before": ["leader", "x"], "commands": [":x!"] },
+
     { "before": ["leader", "="], "after": ["<C-w>", "="] },
 
+    { "before": ["leader", "p"], "after": ["\"", "+", "p"] },
+    { "before": ["leader", "P"], "after": ["\"", "+", "P"] },
+    { "before": ["leader", "y"], "after": ["\"", "+", "y"] },
+    { "before": ["leader", "Y"], "after": ["\"", "+", "Y"] },
+
+    // Opening stuff
     { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },
-    //commenting line
+    { "before": ["leader", "l", "g"], "commands": ["lazygit-vscode.toggle"] },
+    // { "before": ["leader", "l", "g"], "commands": ["lazygit.openLazygit"] },
+    {
+      "before": ["leader", "o"],
+      "commands": ["workbench.action.files.openFileFolder"]
+    },
+
+    { "before": ["leader", "r"], "commands": ["editor.action.rename"] },
+    { "before": ["leader", "b"], "commands": "editor.action.formatDocument" },
+    // Toggle comment selection
     { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
+
+    // {
+    //   "before": ["leader", "d"],
+    //   "after": ["0", "/", "[", "enter", "l", "r", "x", "W"]
+    // },
 
     {
       "before": ["leader", "z"],
       "commands": ["workbench.action.toggleZenMode"]
     }
   ],
+
   "vim.useCtrlKeys": true,
   "vim.autoindent": true,
   "vim.statusBarColorControl": true,
@@ -98,6 +140,7 @@
   "terminal.integrated.defaultProfile.windows": "Git Bash",
 
   "explorer.compactFolders": true,
+  "explorer.fileNesting.enabled": true,
   "files.trimTrailingWhitespace": true,
   "[markdown]": {
     "files.trimTrailingWhitespace": false
@@ -109,6 +152,7 @@
   "editor.fontLigatures": true,
   "editor.accessibilitySupport": "off",
   "editor.lineHeight": 1.4,
+  "editor.renderLineHighlight": "all",
   "editor.cursorBlinking": "expand",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.fontSize": 12,
@@ -118,6 +162,7 @@
   "editor.autoIndent": "full",
   "editor.linkedEditing": true,
   "editor.lineNumbers": "relative",
+  "editor.rulers": [80, 120],
 
   //Minimap and Scrollbar
   "editor.minimap.enabled": true,
@@ -132,10 +177,8 @@
 
   "window.commandCenter": false,
   "window.titleBarStyle": "custom",
-
-  "breadcrumbs.enabled": false,
   "workbench.editor.editorActionsLocation": "hidden",
-  "workbench.editor.showTabs": "single",
+  "workbench.editor.showTabs": "multiple",
   "workbench.layoutControl.enabled": false,
   "workbench.editor.tabActionButton": "right",
   "explorer.decorations.badges": true,
@@ -169,6 +212,15 @@
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
   },
   "zenMode.hideLineNumbers": false,
+  "zenMode.showTabs": "multiple",
+  "workbench.editor.limit.enabled": false,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 3,
   "catppuccin.accentColor": "blue",
-  "workbench.iconTheme": "Monokai Pro Icons"
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.startupEditor": "none",
+  "breadcrumbs.enabled": false,
+  "notebook.lineNumbers": "on",
+  "github.copilot.nextEditSuggestions.enabled": true
 }
