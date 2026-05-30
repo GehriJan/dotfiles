@@ -1,6 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-  //Mark: NAVIGATION
+  // Mark: NAVIGATION
   // Group navigation
   {
     "key": "ctrl+h",
@@ -29,8 +29,7 @@
     "command": "workbench.action.nextEditorInGroup",
     "when": "!inputFocus"
   },
-
-  //Vim-like navigation on selection windows
+  // Vim-like navigation on selection windows
   {
     "key": "ctrl+j",
     "command": "selectNextSuggestion",
@@ -79,28 +78,39 @@
     "when": "terminalFocus"
   },
   {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.terminal.newWithProfile",
+    "when": "terminalFocus"
+  },
+  {
     "key": "ctrl+q",
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
 
   // FILE TREE
+  // Toggle Visibility
   {
     "key": "ctrl+e",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "sideBarFocus || terminalFocus"
+    "command": "workbench.action.toggleSidebarVisibility"
   },
   {
     "key": "ctrl+e",
     "command": "workbench.files.action.focusFilesExplorer",
-    // "when": "editorFocus || !editorIsOpen"
-    "when": "!filesExplorerFocus"
+    "when": "editorTextFocus"
   },
+  // Create stuff
   {
     "key": "n",
     "command": "explorer.newFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
+  {
+    "key": "shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus && !inputFocus"
+  },
+  // File-methods
   {
     "key": "x",
     "command": "filesExplorer.cut",
@@ -122,30 +132,15 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "shift+n",
-    "command": "explorer.newFolder",
-    "when": "explorerViewletFocus"
-  },
-  {
-    "key": "shift+n",
-    "command": "workbench.action.newWindow",
-    "when": "!explorerViewletFocus && !editorTextFocus && !inputFocus"
-  },
-  {
     "key": "d",
     "command": "deleteFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
 
-  //Mimick leader behaviour
+  // Mimick leader behaviour
   {
     "key": "space f",
     "command": "workbench.action.quickOpen",
-    "when": "!inputFocus"
-  },
-  {
-    "key": "space o",
-    "command": "workbench.action.files.openFileFolder",
     "when": "!inputFocus"
   },
   {
@@ -154,25 +149,32 @@
     "when": "!inputFocus"
   },
   {
-    "key": "space x",
-    "command": "workbench.action.closeActiveEditor",
-    "when": "!inputFocus"
-  },
-  {
     "key": "space =",
     "command": "workbench.action.evenEditorWidths",
     "when": "!inputFocus"
   },
   {
-    "key": "space l g",
-    "command": "lazygit-vscode.toggle",
+    "key": "space q",
+    "command": "workbench.action.closeActiveEditor",
     "when": "!inputFocus"
   },
   {
-    "key": "ctrl+enter",
-    "command": "python.execInTerminal",
-    "when": "editorTextFocus && !notebookCellFocused"
+    "key": "space x",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "!inputFocus"
   },
+  {
+    "key": "space l",
+    "command": "workbench.action.moveEditorToNextGroup",
+    "when": "!inputFocus"
+  },
+  {
+    "key": "space h",
+    "command": "workbench.action.moveEditorToPreviousGroup",
+    "when": "!inputFocus"
+  },
+
+  // EXTRA
   {
     "key": "ctrl+o",
     "command": "workbench.action.quickOpen",
@@ -182,14 +184,63 @@
     "key": "ctrl+shift+o",
     "command": "workbench.action.files.openFileFolder"
   },
-
-  // EXTRA
+  // {
+  //   "key": "shift+n",
+  //   "command": "workbench.action.newWindow",
+  //   "when": "!explorerViewletFocus && !editorTextFocus && !terminalFocus"
+  // },
+  {
+    "key": "ctrl+n",
+    "command": "openEditors.newUntitledFile",
+    "when": "editorTextFocus && vim.mode != 'Normal' && vim.mode != 'Insert'"
+  },
   {
     "key": "ctrl+z",
     "command": "workbench.action.toggleZenMode"
   },
+  // Accept/decline selected suggestion or snippet
   {
-    "key": "cmd+k r",
-    "command": "jupyter.restartkernel"
+    "key": "ctrl+a",
+    "when": "(vim.mode == 'Insert' || vim.mode == 'Normal') && suggestWidgetVisible",
+    "command": "acceptSelectedSuggestion"
+  },
+
+  // Mark: COPILOT EDITS
+  // Scroll down half page in Normal mode (replaces vim's <C-d> which is now passed through)
+  // Accept current change (hunk)
+  {
+    "key": "ctrl+a",
+    "command": "chatEditor.action.acceptHunk",
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Insert') && !suggestWidgetVisible"
+  },
+  // Decline current change (hunk)
+  {
+    "key": "ctrl+u",
+    "command": "chatEditor.action.undoHunk",
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Insert')"
+  },
+  // Accept all changes in file
+  {
+    "key": "ctrl+shift+a",
+    "command": "chatEditor.action.accept",
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Insert')"
+  },
+  // Decline all changes in file
+  {
+    "key": "ctrl+shift+u",
+    "command": "chatEditor.action.reject",
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Insert')"
+  },
+  // Go to next change
+  {
+    "key": "ctrl+n",
+    "command": "chatEditor.action.navigateNext",
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Insert')"
+  },
+  // Go to previous change
+  {
+    "key": "ctrl+p",
+    "command": "chatEditor.action.navigatePrevious",
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Insert')"
   }
 ]

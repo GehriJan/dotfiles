@@ -1,0 +1,98 @@
+# General
+alias c='clear'
+alias x='exit'
+alias o='open'
+alias src='cd ~/src'
+alias u='cd .. ; clear ; ls -la'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Git
+alias gitree='git log --graph --all --decorate --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias ge='gitree'
+alias gs='git status'
+alias gb='git branch --all'
+alias gcm='git commit -m'
+alias gch='git checkout'
+alias gp='git pull'
+alias gP='git push'
+alias lg='lazygit'
+
+# Docker
+alias dpa='docker ps -a'
+alias dsa='docker stop $(docker ps -a -q)'
+alias dra='dsa;docker rm $(docker ps -a -q)'
+alias dsp='docker system prune'
+alias dcu='docker compose up'
+alias dc='docker compose'
+alias docker-compose='docker compose'
+
+alias myip='curl https://ipinfo.io/ip'
+alias myip4='curl -4 https://ipinfo.io/ip'
+alias myip6='curl -6 https://ipinfo.io/ip'
+alias cb='xclip -selection clipboard'
+
+# shell
+alias la='ls -la'
+alias ll='ls -l'
+alias hs='history | grep'
+alias '..'='cd ..'
+alias '...'='cd ..\..'
+alias '....'='cd ..\..\..'
+
+# git
+alias ga='git add'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gs='git status'
+alias gl='git log -n8'
+alias gcl='git commit -a -m "lazy commit"'
+alias gp='git push'
+alias gpull="git pull"
+alias gpush="git push"
+alias git-clean-unadded="git clean -f"
+alias git-clean-ignored="git clean -fX"
+
+# aliases
+alias update-aliases='source ~/.bashrc'
+
+# common typos
+alias gti='git'
+alias sl='ls'
+
+# system administration
+alias updgrade='brew update && brew upgrade && echo "UP TO DATE"'
+
+
+# Conda
+# update (delete and re-create) environment
+function ue {
+  if [ -f ./environment.yaml ] || [ -f ./environment.yml ]; then
+    if [ -f ./environment.yaml ]; then
+      environment_file="./environment.yaml"
+    else
+      environment_file="./environment.yml"
+    fi
+    environment_name=$(grep 'name:' "$environment_file" | cut -c 7-)
+    conda deactivate && conda env remove -n "$environment_name" && conda env create --file "$environment_file" && conda activate "$environment_name"
+  else
+    echo "environment.yaml or environment.yml file does not exist"
+  fi
+}
+
+# activate environment
+function ae {
+  if [ -f ./environment.yaml ] || [ -f ./environment.yml ]; then
+    if [ -f ./environment.yaml ]; then
+      environment_file="./environment.yaml"
+    else
+      environment_file="./environment.yml"
+    fi
+    environment_name=$(grep 'name:' "$environment_file" | cut -c 7-)
+    conda deactivate && conda activate "$environment_name" && echo "activated environment $environment_name"
+  else
+    echo "environment.y(a)ml file does not exist. No project environment activated."
+  fi
+}
